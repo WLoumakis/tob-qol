@@ -117,6 +117,20 @@ public class ToBQoLImprovementsPlugin extends Plugin
 		{
 			swapMenuEntry(index++, entry);
 		}
+
+		// Remove the force right-click menu
+		if (config.lootChestBankAll() && client.getGameState() == GameState.LOGGED_IN && !client.isMenuOpen() && isInVerSinhaza())
+		{
+			for (MenuEntry entry : menuEntries)
+			{
+				if (entry.getOption().equals("Bank-all"))
+				{
+					entry.setForceLeftClick(true);
+					break;
+				}
+			}
+			client.setMenuEntries(menuEntries);
+		}
 	}
 
 	@Subscribe

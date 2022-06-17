@@ -26,4 +26,11 @@ public interface ToBQoLImprovementsConfig extends Config
 	{
 		return true;
 	};
+
+	@ConfigItem(
+			keyName = "tobLootChestBankAll",
+			name = "Bank All at Loot Chest",
+			description = "Get rid of the pesky right-click menu when banking by just left-clicking"
+	)
+	default boolean lootChestBankAll() { return true; }
 }
