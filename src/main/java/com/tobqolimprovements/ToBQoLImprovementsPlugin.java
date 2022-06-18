@@ -192,8 +192,8 @@ public class ToBQoLImprovementsPlugin extends Plugin
 		final String option = Text.removeTags(menuEntry.getOption()).toLowerCase();
 		final String target = Text.removeTags(menuEntry.getTarget()).toLowerCase();
 
-		// Swap the "Value" option with "Buy-1" for the given target
-		if (option.equals("value") && config.swapBuyOption())
+		// Swap the "Value" option with "Buy-1" for the given target if it's not off
+		if (option.equals("value") && !config.tobSupplyChestBuy().toString().equals("value"))
 		{
 			if (TOB_CHEST_TARGETS.contains(target))
 			{
@@ -207,7 +207,7 @@ public class ToBQoLImprovementsPlugin extends Plugin
 		MenuEntry[] menuEntries = client.getMenuEntries();
 
 		int thisIndex = findIndex(menuEntries, index, option, target);
-		int optionIdx = findIndex(menuEntries, thisIndex, "buy-1", target);
+		int optionIdx = findIndex(menuEntries, thisIndex, config.tobSupplyChestBuy().toString(), target);
 
 		if (thisIndex >= 0 && optionIdx >= 0)
 		{

@@ -8,13 +8,13 @@ import net.runelite.client.config.ConfigItem;
 public interface ToBQoLImprovementsConfig extends Config
 {
 	@ConfigItem(
-		keyName = "swapBuyOption",
-		name = "Swap Buy Option",
-		description = "Swap the 'Value' menu option with the 'Buy-1' menu option at the supply chest in ToB."
+			keyName = "tobSupplyChestBuy",
+			name = "ToB Supply Chest Buy Options",
+			description = "Swaps the Buy options with Value on items in shops."
 	)
-	default boolean swapBuyOption()
+	default TobChestBuyMode tobSupplyChestBuy()
 	{
-		return true;
+		return TobChestBuyMode.BUY_1;
 	}
 
 	@ConfigItem(
