@@ -10,10 +10,7 @@ import javax.inject.Inject;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
-import net.runelite.api.events.ClientTick;
-import net.runelite.api.events.GameObjectSpawned;
-import net.runelite.api.events.GameStateChanged;
-import net.runelite.api.events.GameTick;
+import net.runelite.api.events.*;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -251,6 +248,17 @@ public class ToBQoLImprovementsPlugin extends Plugin
 		{
 			String option = Text.removeTags(menuEntry.getOption()).toLowerCase();
 			optionIndexes.put(option, idx++);
+		}
+	}
+
+
+	private static final int VERZIK_P2_AREA_SOUND_EFFECT_ID = 3987;
+	@Subscribe
+	public void onAreaSoundEffectPlayed(AreaSoundEffectPlayed areaSoundEffectPlayed) {
+		int soundId = areaSoundEffectPlayed.getSoundId();
+		if (config.muteVerzikP2AreaSounds() && soundId == VERZIK_P2_AREA_SOUND_EFFECT_ID)
+		{
+			areaSoundEffectPlayed.consume();
 		}
 	}
 }

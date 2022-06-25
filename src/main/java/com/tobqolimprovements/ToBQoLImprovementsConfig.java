@@ -33,4 +33,13 @@ public interface ToBQoLImprovementsConfig extends Config
 			description = "Get rid of the pesky right-click menu when banking by just left-clicking"
 	)
 	default boolean lootChestBankAll() { return true; }
+
+	@ConfigItem(
+			keyName = "muteVerzikP2AreaSounds",
+			name = "Mute verzik P2 Area sounds",
+			description = "Change verzik back to old P2 sounds"
+	)
+	default boolean muteVerzikP2AreaSounds() {
+		return false;
+	}
 }
